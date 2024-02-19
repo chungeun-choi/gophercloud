@@ -4,7 +4,7 @@ on:
     paths:
       - '**compute**'
   schedule:
-    - cron: '0 0 */3 * *'
+    - cron: '30 0 * * *'
 jobs:
   functional-compute:
     strategy:
