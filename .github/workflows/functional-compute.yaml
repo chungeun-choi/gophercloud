@@ -1,5 +1,6 @@
 name: functional-compute
 on:
+  push:
   pull_request:
     paths:
       - '**compute**'
