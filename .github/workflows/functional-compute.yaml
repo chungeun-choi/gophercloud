@@ -1,10 +1,11 @@
 name: functional-compute
 on:
+  push:
   pull_request:
     paths:
       - '**compute**'
   schedule:
-    - cron: '0 0 */3 * *'
+    - cron: '30 0 * * *'
 jobs:
   functional-compute:
     strategy:
@@ -46,6 +47,9 @@ jobs:
           branch: ${{ matrix.openstack_version }}
           conf_overrides: |
             CINDER_ISCSI_HELPER=lioadm
+            [[post-config|$NOVA_CONF]]
+            [DEFAULT]
+            max_instances=20
       - name: Checkout go
         uses: actions/setup-go@v5
         with:
